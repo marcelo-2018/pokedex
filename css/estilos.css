@@ -1,0 +1,53 @@
+:root{
+    --soft-blue: hsl(215, 51%, 70%);
+    --cyan: hsl(178, 100%, 50%);
+    --main-verydarkblue: hsl(217, 54%, 11%);
+    --card-verydarkblue: hsl(216, 50%, 16%);
+    --line-verydarkblue: hsl(215, 32%, 27%);
+    --white: hsl(0, 0%, 100%);
+    --p-white: hsl(0, 0%, 60%);
+    --fondo: linear-gradient(rgba(2.0,36,1) 0%, rgba(73,9,121,0.8855742125951943) 0%, rgba(244,0,255,1) 100%, rgba(3,153,216,1) 100%);
+}
+
+*{
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 18px;
+}
+
+body{
+    background: linear-gradient(90deg, rgba(2.0,36,1) 0%, rgba(73,9,121,0.8855742125951943) 0%, rgba(244,0,255,1) 100%, rgba(3,153,216,1) 100%);
+    font-family: 'Outfit', sans-serif;
+}
+
+    header{
+        /* background-color: var(--main-verydarkblue); */
+    }
+
+        .navbar{
+            /* background-color: var(--card-verydarkblue); */
+            width: 100%;
+        }
+
+            .input-busqueda{
+                /* background-color: var(--card-verydarkblue); */
+                width: 400px;
+            }
+
+.input-busqueda{
+    height: 40px;
+}
+
+.card{
+}
+
+    .card-header-img{
+        width: 150px;
+        height: 150px;
+    }
+
+.footer{
+    background-color: var(--card-verydarkblue);
+}
