@@ -19,27 +19,29 @@
         <header>
             <nav class="navbar navbar-light d-flex align-item-center">
                 <div class="navbar-logo">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="index.html">
                         <img src="/images/logo.png" alt="" width="100" height="40">
                     </a>
                 </div>
                 <div class="navbar-busqueda">
                     <form class="d-flex align-item-center" id="pokeForm">
-                        <input class="input-busqueda form-control mt-1" type="search" placeholder="Search" aria-label="Search" id="inputBusqueda">
-                        <button class="btn logo" type="submit" id="btnBuscar">
+                        <input class="input-busqueda form-control" type="text" placeholder="Search" id="inputBusqueda">
+                        <button class="btn logo" id="btnBuscar">
                             <img src="/images/busqueda.png" alt="" width="50" height="50">
                         </button>
                     </form>
                 </div>
             </nav>
-            <section>
-
-            </section>
         </header>
-        <section class="row mt-3" id="rowCards">
+        <div class="text-center">
+            <div class="spinner-border d-none" role="status" id="loading">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <div class="row mt-3" id="rowCards">
             <template id="templateCard">
                 <div class="col col-6 col-sm-6 col-md-6 col-lg-3 mb-3" id="columna">
-                    <article class="card d-flex justify-content-center align-item-center border">
+                    <article class="card d-flex justify-content-center align-item-center">
                         <div class="container-img d-flex justify-content-center align-item-center mt-2">
                             <img src="/images/image-equilibrium.jpg" class="card-header-img rounded-circle border border-3 bg-light" alt="Imagen Pokemon">
                         </div>
@@ -47,26 +49,19 @@
                             <div class="container text-center">
                                 <span class="card-id">N° 23</span>
                                 <h6 class="card-title">Ditto</h6>
-                                <div class="d-grid gap-2">
-                                    <button class="btn btn-outline-secondary btn-sm mb-2 disabled" type="button" id="btnTipo1">Water</button>
-                                </div>
-                                <div class="d-grid gap-2">
-                                    <button class="btn btn-outline-primary btn-sm disabled d-none" type="button" id="btnTipo2">electric</button>
+                                <div class="cardFooter">
+                                    <img src="" alt="Icono tipo" class="imgTipo imgTipo1">
+                                    <img src="" alt="Icono tipo" class="imgTipo imgTipo2">
                                 </div>
                             </div>
                         </div>
                     </article>
                 </div>
             </template>
-            <div id="paginacion">
-                <template id="template-paginacion">
-                    <section class="d-flex justify-content-between my-2">
-                        <button class="btn btn-outline-secondary btn-previou" id="previou">⏪</button>
-                        <button class="btn btn-outline-primary" id="next">⏩</button>
-                    </section>
-                </template>
-            </div>
-        </section>
+        </div>
+        <div class="d-flex justify-content-center my-2" id="paginacion">
+            
+        </div>
         <footer class="footer">
             <div class="container-footer d-flex justify-content-center">
                 <a class="navbar-brand" href="#">

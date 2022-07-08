@@ -1,15 +1,21 @@
 const cardBodyImg = document.querySelector(".card-header-img");
 const container = document.querySelector("main");
 const cardBodyTitle = document.querySelector(".card-title");
-const btnTipo2 = document.querySelector("#btnTipo2");
 const pokeForm = document.getElementById("pokeForm");
-const url = "https://pokeapi.co/api/v2/pokemon/";
+let url = "https://pokeapi.co/api/v2/pokemon/";
 const fragment = document.createDocumentFragment();
+const rowCards = document.getElementById("rowCards");
 
+const containerPaginacion = document.querySelector("#paginacion");
+let btnNext = document.getElementById("next");
+let btnPreviou = document.getElementById("previou");
+
+const templateCard = document.querySelector("#templateCard");
 
 const colors = {
     fire: '#FFA05D',
-    grass: '#8FD594',
+    // grass: '#8FD594',
+    grass: '#9DC652',
     electric: '#FFE43B',
     water: '#7E97C0',
     ground: '#CAAC4D',
@@ -23,6 +29,29 @@ const colors = {
     normal: '#FFFFFF'
 }
 
+const tipos = {
+    normal: "/images/tipo/Icon_Normal.png",
+    fighting: "/images/tipo/Icon_Lucha.png",
+    flying: "/images/tipo/Icon_Volador.png",
+    poison: "/images/tipo/Icon_Veneno.png",
+    ground: "/images/tipo/Icon_Tierra.png",
+    rock: "/images/tipo/Icon_Roca.png",
+    bug: "/images/tipo/Icon_Bicho.png",
+    ghost: "/images/tipo/Icon_Fantasma.png",
+    steel: "/images/tipo/Icon_Acero.png",
+    fire: "/images/tipo/Icon_Fuego.png",
+    water: "/images/tipo/Icon_Agua.png",
+    grass: "/images/tipo/Icon_Planta.png",
+    electric: "/images/tipo/Icon_Eléctrico.png",
+    psychic: "/images/tipo/Icon_Psíquico.png",
+    ice: "/images/tipo/Icon_Hielo.png",
+    dragon: "/images/tipo/Icon_Dragón.png",
+    dark: "/images/tipo/Icon_Siniestro.png",
+    fairy: "/images/tipo/Icon_Hada.png",
+    unknown: "/images/tipo/Icon_Normal.png",
+    shadow: "/images/tipo/Icon_Fantasma.png",
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     FetchData(url);
 });
@@ -31,16 +60,25 @@ document.addEventListener("DOMContentLoaded", () => {
 const FetchData = async (url) => {
     
     try {
+
+        loadingData(true);
+
         const repuesta = await fetch(url);
         const data = await repuesta.json();
         
         console.log(data);
         
-        // buscadorPokemon(data.results);
         dataPokemon(data);
-        
+
+        btnNext = data.next ? `<button class="btn btn-outline-primary" id="next" data-url=${data.next}>→</button>` : ""; 
+        btnPreviou = data.previous ? `<button class="btn btn-outline-secondary btn-previou mx-2" id="previou" data-url=${data.previous}>←</button>` : "";
+        containerPaginacion.innerHTML = btnPreviou + " " + btnNext;
+
     } catch (error) {
         console.log(error);
+    }finally{
+
+        loadingData(false);
     }
     
 }
@@ -48,8 +86,9 @@ const FetchData = async (url) => {
 
 const dataPokemon = async(data) => {
     
+    rowCards.textContent = "";
+
     try {
-        // pintarPaginacion(data);
         
         for(let index of data.results){
             
@@ -58,33 +97,49 @@ const dataPokemon = async(data) => {
             
             pintarPokemon(result);
         }
-        
-        pintarPaginacion(data);
-
     } catch (error) {
         // console.log(error);
         console.error(error.name + ':' + error.message + ":" + error.lineNumber);
     }
 }
 
+const loadingData = (estado) => {
+    const loading = document.querySelector("#loading");
+
+    estado ? loading.classList.remove("d-none") : loading.classList.add("d-none");
+}
+
 const pintarPokemon = (pokemon) => {
-    const rowCards = document.getElementById("rowCards");
-    // rowCards.textContent = ""
     
-    const templateCard = document.querySelector("#templateCard").content;
     const arrayColoresTipo = Object.keys(colors);
     const pokeTipo = pokemon.types.map(type => type.type.name);
-    const tipo = arrayColoresTipo.find(tipo => pokeTipo.indexOf(tipo) > -1);
-    const color = colors[tipo];
+    const tipoColor = arrayColoresTipo.find(tipo => pokeTipo.indexOf(tipo) > -1);
+    const color = colors[tipoColor];
     
+    const arrayTipo = Object.keys(tipos);
+    const indiceTipo1 = arrayTipo.find(tipo => pokeTipo[0] === tipo);  
+    const indiceTipo2 = arrayTipo.find(tipo => pokeTipo[1] === tipo);  
     
-    const clone = templateCard.cloneNode(true);
-
+    const tipo1 = tipos[indiceTipo1];
+    const tipo2 = tipos[indiceTipo2];
+    
+    const clone = templateCard.content.cloneNode(true);
+    
     clone.querySelector(".card").style.backgroundColor = color;
     clone.querySelector(".card-header-img").setAttribute("src", pokemon.sprites.other.dream_world.front_default);
     clone.querySelector("h6").textContent = pokemon.name;
     clone.querySelector(".card-id").textContent = `N° ${pokemon.id}`;
-    clone.querySelector(".btn-outline-secondary").textContent = pokemon.types[0].type.name;
+    
+    if(pokeTipo.length === 1){
+
+        clone.querySelector(".imgTipo1").setAttribute("src", tipo1);
+        clone.querySelector(".imgTipo2").classList.add("d-none");
+        
+    }else if(pokeTipo.length === 2){
+        clone.querySelector(".imgTipo2").classList.remove("d-none");
+        clone.querySelector(".imgTipo1").setAttribute("src", tipo1);
+        clone.querySelector(".imgTipo2").setAttribute("src", tipo2);
+    }
     
     
     fragment.appendChild(clone);
@@ -93,52 +148,52 @@ const pintarPokemon = (pokemon) => {
 }
 
 // Paginacion
-let contador = 0;
 
-const pintarPaginacion = (data) => {
+containerPaginacion.addEventListener("click", (e) => {
+    
+    url = e.target.dataset.url
+    
+    if(e.target.matches("#next")){
+        FetchData(url);
+    }
+    
+    if(e.target.matches("#previou")){
+        FetchData(url);
+    }
+});
 
-    contador++;
-    
-    const templatePaginacion = document.querySelector("#template-paginacion").content;
-    const containerPaginacion = document.querySelector("#paginacion");
-    const btnNext = document.getElementById("next");
-    const btnPreviou = document.getElementById("previou");
-    // containerPaginacion.textContent = "";
-    
-    // const btnPreviou = document.querySelector("#previou");
-    
-    const clone = templatePaginacion.cloneNode(true);
-    
-    fragment.appendChild(clone);
-    console.log(btnNext,btnPreviou)
-    
-    // data.next? btnNext.className.remove("d-none") : btnNext.className.add("d-none");
-    // data.previous? btnPreviou.className.remove("d-none") : btnPreviou.className.add("d-none");
-    
-    containerPaginacion.appendChild(fragment);
-    
-    containerPaginacion.addEventListener("click", (e) => {
-        if(e.target.matches("#next")){
-            FetchData(data.next);
+// Buscador
+
+const inputBusqueda = document.querySelector("#inputBusqueda");
+const btnBuscar = document.querySelector("#btnBuscar");
+
+const buscadorPokemon = async() => {
+
+    try {
+        const texto = inputBusqueda.value.toLowerCase();
+
+        if(texto != ""){
+            const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${texto.toLowerCase()}`);
+            const data = await res.json();
+
+            rowCards.textContent = "";
+            pintarPokemon(data);
+
+            btnNext.classList.add("d-none");
+            btnPreviou.classList.add("d-none");
+
+
+        }else{
+            FetchData(url);
         }
         
-        if(e.target.matches("#previou")){
-            FetchData(data.previous);
-        }
-    });
-
-    console.log(contador);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-const buscadorPokemon = (pokemon) => {
+btnBuscar.addEventListener("click", (e) =>{
 
-    const inputBusqueda = document.querySelector("#inputBusqueda");
-    const btnBuscar = document.querySelector("#btnBuscar");
-    
-    btnBuscar.addEventListener("submit", (e) => {
-        
-        e.preventDefault();
-        console.log(inputBusqueda.value);
-        console.log("click");
-    });
-};
+    e.preventDefault();
+    buscadorPokemon();
+});

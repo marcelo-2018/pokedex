@@ -6,7 +6,6 @@
     --line-verydarkblue: hsl(215, 32%, 27%);
     --white: hsl(0, 0%, 100%);
     --p-white: hsl(0, 0%, 60%);
-    --fondo: linear-gradient(rgba(2.0,36,1) 0%, rgba(73,9,121,0.8855742125951943) 0%, rgba(244,0,255,1) 100%, rgba(3,153,216,1) 100%);
 }
 
 *{
@@ -18,7 +17,7 @@ html{
 }
 
 body{
-    background: linear-gradient(90deg, rgba(2.0,36,1) 0%, rgba(73,9,121,0.8855742125951943) 0%, rgba(244,0,255,1) 100%, rgba(3,153,216,1) 100%);
+    background-color: rgb(32,33,36);
     font-family: 'Outfit', sans-serif;
 }
 
@@ -41,6 +40,14 @@ body{
 }
 
 .card{
+    border: 0;
+    border-radius: 1rem;
+    background: transparent;
+    margin-top: 30px;
+    transition: ease 0.5s;
+    width: 250px;
+    animation-name: opacity;
+    animation-duration: 1s;
 }
 
     .card-header-img{
@@ -48,6 +55,14 @@ body{
         height: 150px;
     }
 
+    .card-footer{
+
+    }
+        .imgTipo{
+            width: 30px;
+            height: 30px;
+        }
+
 .footer{
-    background-color: var(--card-verydarkblue);
+    /* background-color: var(--card-verydarkblue); */
 }
