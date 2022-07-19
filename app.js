@@ -70,7 +70,7 @@ const FetchData = async (url) => {
         
         dataPokemon(data);
 
-        btnNext = data.next ? `<button class="btn btn-outline-primary" id="next" data-url=${data.next}>→</button>` : ""; 
+        btnNext = data.next ? `<button class="btn btn-outline-secondary" id="next" data-url=${data.next}>→</button>` : ""; 
         btnPreviou = data.previous ? `<button class="btn btn-outline-secondary btn-previou mx-2" id="previou" data-url=${data.previous}>←</button>` : "";
         containerPaginacion.innerHTML = btnPreviou + " " + btnNext;
 
@@ -125,7 +125,12 @@ const pintarPokemon = (pokemon) => {
     
     const clone = templateCard.content.cloneNode(true);
     
-    clone.querySelector(".card").style.backgroundColor = color;
+    if(color != null){
+        
+        clone.querySelector(".card").style.backgroundColor = color;
+    }else{
+        clone.querySelector(".card").style.backgroundColor = "#FFFFFF";
+    }
     clone.querySelector(".card-header-img").setAttribute("src", pokemon.sprites.other.dream_world.front_default);
     clone.querySelector("h6").textContent = pokemon.name;
     clone.querySelector(".card-id").textContent = `N° ${pokemon.id}`;
@@ -178,7 +183,7 @@ const buscadorPokemon = async() => {
 
             rowCards.textContent = "";
             pintarPokemon(data);
-
+            
             btnNext.classList.add("d-none");
             btnPreviou.classList.add("d-none");
 
