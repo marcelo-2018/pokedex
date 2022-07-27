@@ -19,17 +19,15 @@
     <!-- <header class="container-fluid">
     </header> -->
     <nav class="navbar navbar-light container-fluid">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="/images/logo.png" alt="" width="100" height="40">
-            </a>
-            <form class="d-flex align-item-center" id="pokeForm">
-                <input class="input-busqueda me-2" type="text" placeholder="Buscar" id="inputBusqueda">
-                <button class="btn btn-busqueda d-flex mt-1 text-light" id="btnBuscar">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </form>
-        </div>
+        <a class="navbar-brand" href="index.html">
+            <img src="/images/logo.png" alt="" width="100" height="40">
+        </a>
+        <form class="d-flex align-item-center" id="pokeForm">
+            <input class="input-busqueda me-2" type="text" placeholder="Buscar" id="inputBusqueda">
+            <button class="btn btn-busqueda d-flex mt-1 text-light" id="btnBuscar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
     </nav>
     <main class="container-fluid">
         <div class="text-center">
@@ -39,7 +37,7 @@
         </div>
         <div class="row ms-3" id="rowCards">
             <template id="templateCard">
-                <div class="col col-6 col-sm-6 col-md-6 col-lg-3 mb-3" id="columna">
+                <div class="col col-12 col-sm-6 col-md-4 col-lg-3 mb-3" id="columna">
                     <article class="card d-flex justify-content-center align-item-center">
                         <div class="container-img d-flex justify-content-center align-item-center mt-2">
                             <img src="/images/image-equilibrium.jpg" class="card-header-img rounded-circle border border-3 bg-light" alt="Imagen Pokemon">
