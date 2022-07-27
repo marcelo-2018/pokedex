@@ -11,9 +11,10 @@ Creación de una pokedex utilizando la api (https://pokeapi.co/). En este sitio 
 
 ### Vistas del Proyecto 👀
 
-👇👇👇
+### 👇👇👇
 [Click para ingresar al sitio web](https://pokedex-maab.netlify.app/)
-☝️☝️☝️
+
+
 
 ![Captura de la web](./vistas/Vista1.png)
 
