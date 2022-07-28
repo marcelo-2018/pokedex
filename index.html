@@ -16,69 +16,80 @@
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    <!-- <header class="container-fluid">
-    </header> -->
-    <nav class="navbar navbar-light container-fluid">
-        <a class="navbar-brand" href="index.html">
-            <img src="/images/logo.png" alt="" width="100" height="40">
-        </a>
-        <form class="d-flex align-item-center" id="pokeForm">
-            <input class="input-busqueda me-2" type="text" placeholder="Buscar" id="inputBusqueda">
-            <button class="btn btn-busqueda d-flex mt-1 text-light" id="btnBuscar">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </form>
+    <!-- NavBar -->
+    <nav class="navbar navbar-expand navbar-light">
+        <div class="container d-flex flex-column justify-content-center flex-md-row justify-content-sm-between">
+            <a class="navbar-brand mb-2" href="index.html">
+                <img src="/images/logo.png" alt="Brand logo">
+            </a>
+            <form class="d-flex align-item-center" id="pokeForm">
+                <input class="input-busqueda border-1 border-dark rounded-pill" type="text" placeholder=" Buscar" id="inputBusqueda">
+                <button class="btn btn-busqueda d-flex mt-1 text-light" id="btnBuscar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+        </div>
     </nav>
-    <main class="container-fluid">
+
+    <!-- Row -->
+    <div class="container">
         <div class="text-center">
             <div class="spinner-border d-none" role="status" id="loading">
-              <span class="visually-hidden">Loading...</span>
+                <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-        <div class="row ms-3" id="rowCards">
+        <div class="row row-estilo d-flex align-item-center justify-content-center justify-content-sm-center ms-4" id="rowCards">
             <template id="templateCard">
-                <div class="col col-12 col-sm-6 col-md-4 col-lg-3 mb-3" id="columna">
-                    <article class="card d-flex justify-content-center align-item-center">
-                        <div class="container-img d-flex justify-content-center align-item-center mt-2">
-                            <img src="/images/image-equilibrium.jpg" class="card-header-img rounded-circle border border-3 bg-light" alt="Imagen Pokemon">
-                        </div>
-                        <div class="card-body">
-                            <div class="container text-center">
-                                <span class="card-id">N° 23</span>
-                                <h6 class="card-title">Ditto</h6>
-                                <div class="cardFooter">
-                                    <img src="" alt="Icono tipo" class="imgTipo imgTipo1">
-                                    <img src="" alt="Icono tipo" class="imgTipo imgTipo2">
-                                </div>
+                <article class="card col col-12 mx-sm-2 col-sm-6 col-md-4 col-lg-3 mb-1">
+                    <div class="container-img d-flex justify-content-center align-item-center mt-2">
+                        <img src="/images/image-equilibrium.jpg" class="card-header-img rounded-circle border border-3 bg-light" alt="Imagen Pokemon">
+                    </div>
+                    <div class="card-body">
+                        <div class="container text-center">
+                            <span class="card-id">N° 23</span>
+                            <h6 class="card-title">Ditto</h6>
+                            <div class="cardFooter">
+                                <img src="" alt="Icono tipo" class="imgTipo imgTipo1">
+                                <img src="" alt="Icono tipo" class="imgTipo imgTipo2">
                             </div>
                         </div>
-                    </article>
-                </div>
+                    </div>
+                </article>
             </template>
         </div>
-        <div class="d-flex justify-content-center my-2" id="paginacion">
-            
+        <div class="d-flex justify-content-center my-3" id="paginacion">
         </div>
-        <footer class="footer container-fluid d-flex justify-content-between align-item-center border-top border-secondary mt-5">
-            <div class="container-footer d-flex align-item-center my-3">
-                <a class="navbar-brand" href="#">
-                    <img src="/images/logo.png" alt="" width="100" height="40">
+    </div>
+
+    <!-- Contacto -->
+    <div class="container contacto my-5">
+
+        <!-- Navbar footer -->
+        <div class="row justify-content-center text-center mt-3">
+            <!-- Logo -->
+            <a class="navbar-brand" href="#">
+                <img src="/images/logo.png" alt="">
+            </a>
+
+            <!-- Redes -->
+            <div class="icon-social-networks mt-3">
+                <a class="navbar-brand bg-instagram" href="#">
+                    <i class="fa-brands fa-instagram"></i>
                 </a>
-                <p class="text-light fs-6 mt-3">© 2022 Company, Inc. All rights reserved.</p>
+                <a class="navbar-brand bg-facebook mx-3" href="#">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a class="navbar-brand bg-twitter mx-3" href="#">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
             </div>
-            <div class="container-footer d-flex align-item-center my-4">
-                <a class="navbar-brand" href="#">
-                    <i class="fa-brands fa-instagram text-light"></i>
-                </a>
-                <a class="navbar-brand" href="#">
-                    <i class="fa-brands fa-facebook text-light"></i>
-                </a>
-                <a class="navbar-brand" href="#">
-                    <i class="fa-brands fa-twitter text-light"></i>
-                </a>
-            </div>
-        </footer>
-    </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="textcenter mt-4 mb-0 p-2">
+        <p class=" text-center text-light fs-6">© 2022 Company, Inc. All rights reserved.</p>
+    </footer>
 
     <script src="app.js"></script>
 </body>

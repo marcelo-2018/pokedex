@@ -13,87 +13,107 @@
 }
 
 html{
-    font-size: 18px;
+    /* font-size: 18px; */
 }
 
 body{
     background-color: rgb(32,33,36);
     font-family: 'Outfit', sans-serif;
 }
-    main{
-        /* position: relative;
-        top: 50px;
-        right: 10px;
-        left: 10px; */
+    /* SECTION */
+    /* Nav */
+    .navbar-brand > img{
+        width: 90px;
     }
 
-    header{
-        /* background-color: var(--main-verydarkblue); */
-    }
-
-        .navbar{
-            /* background-color: var(--card-verydarkblue); */
-            /* width: 100%;
-            position: absolute;
-            top: 0;
-            left: 10px;
-            z-index: 1; */
+        .navbar-busqueda{
+            height: 50px;
         }
 
-            .navbar-busqueda{
-                height: 50px;
+            .input-busqueda{
+                /* background-color: var(--card-verydarkblue); */
+                width: 300px;
             }
 
-                .input-busqueda{
-                    /* background-color: var(--card-verydarkblue); */
-                    width: 400px;
+            .btn-busqueda{
+                width: 40px;
+                height: 30px;
+                margin-right: 4px;
+                padding-right: 10px;
+                align-items: center;
+            }
+
+                .img-busqueda{
+                    width: 50px;
+                    height: 50px;
                 }
 
-                .btn-busqueda{
-                    width: 40px;
-                    height: 30px;
-                    margin-right: 6px;
-                    padding-right: 10px;
-                    align-items: center;
-                }
-
-                    .img-busqueda{
-                        width: 50px;
-                        height: 50px;
-                    }
-
-.input-busqueda{
-    height: 40px;
+/* ROW */
+.row-estilo{
+    min-height: 100vh;
 }
 
-.card{
-    border: 0;
-    border-radius: 1rem;
-    background: transparent;
-    margin-top: 30px;
-    transition: ease 0.5s;
-    width: 250px;
-    animation-name: opacity;
-    animation-duration: 1s;
-}
-
-    .card-header-img{
-        width: 150px;
-        height: 150px;
+    .card{
+        border: 0;
+        border-radius: 1rem;
+        background: transparent;
+        margin-top: 30px;
+        transition: ease 0.5s;
+        width: 250px;
+        animation-name: opacity;
+        animation-duration: 1s;
     }
 
-    .card-footer{
-
+        .card-header-img{
+            width: 150px;
+            height: 150px;
+        }
+            .imgTipo{
+                width: 30px;
+                height: 30px;
+            }
+    
+    .contacto{
+        border-top: 1px solid var(--p-white);
     }
-        .imgTipo{
-            width: 30px;
-            height: 30px;
+
+    .icon-social-networks > a{
+        --size: 40px;
+        width: var(--size);
+        height: var(--size);
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        transition: .5s filter;
+    }
+
+    .icon-social-networks > a:hover{
+        filter: opacity(0.5);
+        color:hsl(217, 54%, 11%);
+    }
+
+        .bg-instagram{
+            background-color: white;
+            color: black;
+        }
+        
+        .bg-facebook{
+            background-color: white;
+            color: black;
+        }
+        
+        .bg-twitter{
+            background-color: white;
+            color: black;
         }
 
 .footer{
 }
 
 
-@media (max-width: 700px) {
-    
-  }
+@media (max-width: 775px) {
+    .navbar-brand > img{
+        width: 150px;
+    }    
+}
