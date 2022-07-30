@@ -60,9 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
 const FetchData = async (url) => {
     
     try {
-
         loadingData(true);
-
+        
         const repuesta = await fetch(url);
         const data = await repuesta.json();
         
@@ -77,8 +76,10 @@ const FetchData = async (url) => {
     } catch (error) {
         console.log(error);
     }finally{
-
-        loadingData(false);
+        
+        setTimeout(()=> {
+            loadingData(false);
+        },1500);
     }
     
 }
@@ -95,7 +96,9 @@ const dataPokemon = async(data) => {
             const resp = await fetch(index.url);
             const result = await resp.json();
             
-            pintarPokemon(result);
+            setTimeout(()=>{
+                pintarPokemon(result);
+            }, 1500);
         }
     } catch (error) {
         // console.log(error);
@@ -104,9 +107,12 @@ const dataPokemon = async(data) => {
 }
 
 const loadingData = (estado) => {
-    const loading = document.querySelector("#loading");
+    const containerLoading = document.querySelector(".container-loading");
+    // const loading = document.querySelector("#loading");
 
-    estado ? loading.classList.remove("d-none") : loading.classList.add("d-none");
+    console.log(containerLoading.classList);
+
+    estado ? containerLoading.classList.remove("d-none") : containerLoading.classList.add("d-none");
 }
 
 const pintarPokemon = (pokemon) => {
