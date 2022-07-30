@@ -5,6 +5,7 @@ const pokeForm = document.getElementById("pokeForm");
 let url = "https://pokeapi.co/api/v2/pokemon/";
 const fragment = document.createDocumentFragment();
 const rowCards = document.getElementById("rowCards");
+const modal = document.querySelector("#modal");
 
 const containerPaginacion = document.querySelector("#paginacion");
 let btnNext = document.getElementById("next");
@@ -69,8 +70,8 @@ const FetchData = async (url) => {
         
         dataPokemon(data);
 
-        btnNext = data.next ? `<button class="btn btn-outline-secondary" id="next" data-url=${data.next}>→</button>` : ""; 
-        btnPreviou = data.previous ? `<button class="btn btn-outline-secondary btn-previou mx-2" id="previou" data-url=${data.previous}>←</button>` : "";
+        btnNext = data.next ? `<a class="btn btn-outline-secondary" href="#" id="next" data-url=${data.next}>→</a>` : ""; 
+        btnPreviou = data.previous ? `<a class="btn btn-outline-secondary btn-previou mx-2" href="#" id="previou" data-url=${data.previous}>←</a>` : "";
         containerPaginacion.innerHTML = btnPreviou + " " + btnNext;
 
     } catch (error) {
@@ -108,7 +109,6 @@ const dataPokemon = async(data) => {
 
 const loadingData = (estado) => {
     const containerLoading = document.querySelector(".container-loading");
-    // const loading = document.querySelector("#loading");
 
     console.log(containerLoading.classList);
 
